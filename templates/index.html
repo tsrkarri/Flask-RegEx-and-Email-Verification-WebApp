@@ -1,1 +1,59 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(43, 99, 43);
+        }
+    </style>
+</head>
+<body>
+        <div class="container mt-5">
+            <div id="regex" class="rounded p-4 mb-5" style="background-color: rgb(255, 255, 255); box-shadow: 0 0 10px rgb(0, 0, 0); max-width: 600px; margin: 0 auto;">
+                <h1 class="text-center"> RegEx Matching</h1>
+                <form action="/results" class="text-center" method="post">
+                    <div class="form-group">
+                        <label for="regex">Regular Expression:</label> <br><input type="text" name="regex" value="{{ request.form.regex }}" placeholder="Enter Regex" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="string">String:</label> <br><input type="text" name="string" value="{{ request.form.string }}" placeholder="Enter String" required>
+                    </div>
+                    <button type="submit" class="btn" style="background-color: rgb(43, 99, 43); color: rgb(255, 255, 255);">Get answer</button> <!-- Added Bootstrap button class -->
+                </form>
+                <div id="matches" class="text-center mt-5">
+                    <div class="container">
+                        <div class="row">
+                            {% for match in matched_strings %}
+                                <div class="col-md-2 mb-2" style="color: rgb(43, 99, 43)">
+                                    <div class="border p-2" ><h6>{{ match }}</h6></div>
+                                </div>
+                            {% endfor %}
+                            {% if error_message %}
+                                <div class="alert alert-danger" role="alert">
+                                    <h1>ERROR : Invalid Input. Try Again</h1>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="email" class="rounded p-4 mb-5" style="background-color: rgb(255, 255, 255); box-shadow: 0 0 10px rgb(0, 0, 0); max-width: 600px; margin: 0 auto;">
+                <h1 class="text-center"> Email Verification</h1>
+                <form action="/email" class="text-center" method="post">
+                    <div class="form-group">
+                        <label for="email">Email:</label> <br><input type="email" name="email" value="{{ request.form.email }}" placeholder="Enter Email" required>
+                    </div>
+                    <button type="submit" class="btn" style="background-color: rgb(43, 99, 43); color: rgb(255, 255, 255);">Verify</button> <!-- Added Bootstrap button class -->
+                </form>
+                {% if message %}
+                <p class="text-center">{{ message }}</p>
+                {% endif %}
+            </div>
+        </div>
+</body>
+</html>
