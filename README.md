@@ -13,7 +13,7 @@ This application is built mainly using Flask Framework in python, HTML, CSS and 
 ## Installation
 
 ### 1. Clone the repository:
-  git clone https://github.com/yourusername/your-project.git
+  git clone https://github.com/tsrkarri/Flask-RegEx-and-Email-Verification-WebApp
 
 ### 2. Navigate to the project directory:
   cd your-project
